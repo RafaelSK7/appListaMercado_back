@@ -1,5 +1,7 @@
 package br.com.isiflix.appmercado.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -26,6 +28,7 @@ public class Lista {
     private Integer status;
 
     @OneToMany(mappedBy = "lista", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("lista")
     private List<ItemLista> itens;
 
     public Integer getId() {

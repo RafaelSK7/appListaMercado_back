@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 public class ItemListaController {
 
     @Autowired
@@ -16,7 +17,7 @@ public class ItemListaController {
     public ResponseEntity<ItemLista> inserir(@RequestBody ItemLista novo){
         ItemLista res = service.inserirItem(novo);
         if (res != null){
-            return ResponseEntity.status(201).body(novo);
+            return ResponseEntity.ok(res);
         }
         return ResponseEntity.badRequest().build();
     }

@@ -2,15 +2,12 @@ package br.com.isiflix.appmercado.services;
 
 import br.com.isiflix.appmercado.model.Produto;
 import br.com.isiflix.appmercado.repository.ProdutoRepository;
-import br.com.isiflix.appmercado.service.IProdutoService;
 import br.com.isiflix.appmercado.service.ProdutoServiceImpl;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -37,7 +34,7 @@ public class ProdutoTests {
     private ArrayList<Produto> listaDeVariosProdutos;
 
     @BeforeEach
-    public void setup() throws Exception{
+    public void setup() throws Exception {
 
         newProduct = new Produto();
         newProduct.setNome("Bolacha");
@@ -65,28 +62,28 @@ public class ProdutoTests {
     }
 
     @Test
-    public void deveriaCadastrarProduto(){
+    public void deveriaCadastrarProduto() {
         assertEquals(service.criarNovoProduto(newProduct), createdProduct);
     }
 
     @Test
-    public void deveriaRetornarPeloId(){
+    public void deveriaRetornarPeloId() {
         assertNotNull(service.buscarPorId(existingId));
 
     }
 
     @Test
-    public void deveriaNaoEncontrarId(){
+    public void deveriaNaoEncontrarId() {
         assertNull(service.buscarPorId(nonExistingId));
     }
 
     @Test
-    public void deveriaRetornarListaComPalavraChave(){
+    public void deveriaRetornarListaComPalavraChave() {
         assertTrue(service.buscarPorPalavraChave(keyword).size() > 0);
     }
 
     @Test
-    public void deveriaRetornarListaVazia(){
+    public void deveriaRetornarListaVazia() {
         assertTrue(service.buscarPorPalavraChave("Biscoito").size() == 0);
     }
 
